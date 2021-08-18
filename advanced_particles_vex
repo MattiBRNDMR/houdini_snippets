@@ -1,0 +1,41 @@
+float seed = rand(@id+412.4234*423.43)+ chf("seed");
+float na = f@age / f@life;
+
+f@pscale = fit01( chramp("pscale_propability", rand(seed+4534534)), chf("min_pscale"), chf("max_pscale"));
+f@pscale *= 0.01;
+f@pscale *= chf("pscale_mult");
+f@pscale *= chramp("pscale_by_nage", na);
+
+v@Cd = vector(chramp("color_by_nage", na));
+f@Alpha = chramp("alpha_by_nage", na);
+
+if(chi("use_density")) {
+
+    float rad = chf("radius");
+    int maxpts = chi("max_pts");
+    int pts[] = pcfind(0, "P", v@P, rad, maxpts);
+    float density = float(len(pts)) / float(maxpts);
+    density = fit( density, chf("density_input_min"), 1.0, chf("density_output_min"), chf("density_output_max"));
+    density = pow(density, 1.5);
+    f@pscale *= density;
+    f@Alpha *= density;
+    
+    if(chi("create_bright_centers")) {
+    
+        float density_thresh = chf("density_threshold");
+        float particle_prop = chf("particle_propability");
+        
+        if( density > density_thresh && rand(@id+41434) > particle_prop) {
+        
+            f@pscale *= pow(fit01(rand(seed+43432.4234), chf("min_pscale_mult"), chf("max_pscale_mult")),1.5);
+            f@Alpha *= pow(fit01(rand(seed+4343432452.756), chf("min_alpha_mult"), chf("max_alpha_mult")),1.5);
+            v@Cd *= pow(fit01(rand(seed+2141.756), chf("min_cd_mult"), chf("max_cd_mult")),1.5);
+        
+        }
+    
+    }
+}
+
+f@Alpha *= chf("alpha_mult");
+v@Cd *= chf("cd_mult");
+v@v *= chf("velocity_mult");
