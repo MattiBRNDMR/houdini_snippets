@@ -1,0 +1,13 @@
+float rad = chf( "rad" );
+int max_pts = chi( "max_pts" );
+int pts[] = pcfind( 0, "P", v@P, rad, max_pts );
+
+float _density = float( len( pts ) ) / float( max_pts );
+
+_density = chramp( "remap_density", _density );
+
+//f@Cd = _density;
+
+f@pscale = fit01( chramp( "pscale_propability", rand( i@id + 163.342 ) ), chf( "min_pscale" ), chf( "max_pscale" ) ) * 0.01 * chf( "pscale_mult" );
+f@pscale *= chramp( "pscale_nage", f@normAge );
+f@pscale *= _density;
