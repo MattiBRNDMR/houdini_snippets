@@ -1,0 +1,14 @@
+//pts with normals in first input, packed variants in second - packed variants should have i@variant = @ptnum;
+
+float s = rand( @ptnum + 3242.423 + chf( "seed" ) * 4234234.32 );
+vector n = normalize( v@N );
+float d = dot( n, set( 0, 1, 0 ) );
+vector up = d != -1 && d!= -1 ? set( 0, 1, 0 ) : set( 1, 0 , 0 );
+
+
+matrix3 r = maketransform( cross( up, n ), n );
+rotate( r, radians( fit01( chramp( "rotation_propability", rand( s + 4234 ) ), chf( "min_rotation" ), chf( "max_rotation" ) ) ), n);
+
+p@orient = quaternion( r );
+
+i@variant = int( fit01 (rand (@ptnum + 12443.5345 * 124.345 + chf("seed") ), 0 , npoints(1) ));
