@@ -1,0 +1,7 @@
+float seed = chf( "seed" );
+
+f@mass = fit01( chramp( "mass_dist", rand( @ptnum * 534.64 + seed ) ), 0.25, 1.0 ) * chf( "mass_scale" );
+f@life = fit01( chramp( "life_dist", rand( @ptnum * -534.54 + seed ) ), 0.25, 1.0 ) * chf( "life_scale" );
+f@bounce = fit01( chramp( "bounce_dist", rand( @ptnum * +75.235 + seed ) ), 0.25, 1.0 ) * chf( "bounce_scale" );
+f@friction = fit01( chramp( "friction_dist", rand( @ptnum * +75.235 + seed ) ), 0.25, 1.0 ) * chf( "friction_scale" );
+
