@@ -1,0 +1,5 @@
+int prim; vector primuv;
+float dist = xyzdist(0, v@P, prim, primuv);
+f@curveu = float( primuv.x ) / 1.0;
+
+v@P = primuv( 0, "P", prim, set ( primuv.x * chf( "grow" ), 0, 0 ));
