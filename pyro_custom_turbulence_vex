@@ -1,0 +1,17 @@
+//put in a gasfield wrangle
+
+float _time = chf( "noise_speed" ) * f@Time;
+vector _p = ( v@vel + chf( "noise_seed" ) * chf( "noise_size" ) ) / chf( "noise_size" );
+float _strength = chf( "noise_strength" );
+
+float _speed = length( v@vel );
+//float _pressure = 1.0 * abs( f@pressure );
+
+float _mask = fit( f@density, 0.05, 0.1, 1.0, 0.0 );
+
+vector4 _noisePos = set( _p.x, _p.y, _p.z, _time );
+vector _noise = curlxnoise( _noisePos );
+
+v@vel += _noise * _strength * _mask * _speed * @TimeInc;
+//v@vel += _noise * _strength * mask * _pressure * @TimeInc; //pressure based turbulence
+// comment out _speed or _pressure, depending on what youre using
