@@ -1,0 +1,7 @@
+float _rot = fit11( sin( @Time * 8.0 ), -30.0, 30.0 );
+float _mask = fit01( noise( v@P + chf( "mask_noise_seed" ) + @Time * chf( "mask_noise_size" ) ) / chf( "mask_noise_size" ), 0.5, 1.0 );
+
+vector _winddir = qrotate( quaternion( radians( _rot ), {0,1,0} ), chv("wind_dir") );
+vector _wind = (fit( @density, 0.0, 0.5, 1, 0 ) )* _mask * _winddir;
+_wind -= v@vel * @TimeInc;
+v@vel += _wind * @TimeInc * chf("wind_strength");
