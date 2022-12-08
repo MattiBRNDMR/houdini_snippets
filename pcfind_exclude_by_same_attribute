@@ -1,0 +1,28 @@
+float rad = chf( "rad" );
+int maxPts = chi( "max_pts" );
+
+int pts[] = pcfind( 0, "P", v@P, rad, maxPts );
+removevalue( pts, @ptnum );
+
+if( len( pts ) == 0 )
+    i@nearestpt = -1;
+
+foreach ( int pt; pts ) 
+{
+
+    int ptTree = point( 0, "tree", pt );
+    vector ptPos = point( 0, "P", pt );
+    
+    if( ptTree == i@tree )
+        continue;
+        
+    if( ptTree != i@tree )
+    {
+        
+        i@nearestpt = pt;
+        f@dist = distance( v@P,  ptPos );
+        break;
+        
+    }
+
+}
