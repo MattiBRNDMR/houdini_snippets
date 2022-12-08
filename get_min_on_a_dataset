@@ -1,0 +1,17 @@
+int treePts = findattribvalcount( 0, "point", "tree", i@tree );
+
+float dists[] = {};
+append( dists, f@dist );
+
+for( int i = 0; i < treePts; i++ )
+{
+    
+    int treePt = findattribval( 0, "point", "tree", i );
+    float treePtDist = point( 0, "dist", treePt );
+    append( dists, treePtDist );
+}
+
+float minDist = min( dists );
+
+if( f@dist != minDist )
+    i@nearestpt = -1;
